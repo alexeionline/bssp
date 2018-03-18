@@ -1,13 +1,9 @@
-import React from 'react';
+import React from "react";
 import { withRouter } from "react-router-dom";
-import { Container } from 'semantic-ui-react'
+import { Container } from "semantic-ui-react";
 
 const About = () => {
-    return (
-        <Container>
-            This is a page about us
-        </Container>
-    );
+  return <Container>This is a page about us</Container>;
 };
 
-export default withRouter( About );
+export default withRouter(About);
