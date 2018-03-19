@@ -1,7 +1,7 @@
 const express = require("express");
-const fileStream = require("fs");
+const fileSystem = require("fs");
 const app = express();
-const objectsJSON = fileStream.readFileSync('./db.json');
+const objectsJSON = fileSystem.readFileSync('./db.json');
 const objects = JSON.parse( objectsJSON ).objects;
 
 app.get("/api/objects/",
