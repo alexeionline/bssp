@@ -1,0 +1,94 @@
+{
+  "objects": [
+    {
+      "id": 1,
+      "city": "Севастополь",
+      "address": "Глухова, 9",
+      "map": [44.595863, 33.484864],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 2,
+      "city": "Севастополь",
+      "address": "Глухова, 14",
+      "map": [44.596781, 33.485825],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 3,
+      "city": "Севастополь",
+      "address": "Глухова, 1",
+      "map": [44.596492, 33.486166],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 4,
+      "city": "Севастополь",
+      "address": "Глухова, 20",
+      "map": [44.596036, 33.484550],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 5,
+      "city": "Севастополь",
+      "address": "Глухова, 24",
+      "map": [44.595664, 33.483768],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    }
+  ]
+}
