@@ -89,6 +89,96 @@
       "phone": "+79781111111",
       "email": "lorem@gmail.com",
       "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 6,
+      "city": "Севастополь",
+      "address": "Хрусталева, 91",
+      "map": [44.567190, 33.519970],
+      "square": 5.4,
+      "price": 999999999,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 2,
+      "city": "Севастополь",
+      "address": "Хрусталева, 87",
+      "map": [44.568070, 33.520473],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 3,
+      "city": "Севастополь",
+      "address": "Хрусталева, 93",
+      "map": [44.566644, 33.519979],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 4,
+      "city": "Севастополь",
+      "address": "Хрусталева, 97",
+      "map": [44.566111, 33.520410],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 5,
+      "city": "Севастополь",
+      "address": "Хрусталева, 85",
+      "map": [44.568269, 33.521318],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
     }
   ]
 }
