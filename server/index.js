@@ -13,7 +13,8 @@ app.get("/api/objects/", function(req, res) {
 app.get("/api/objects/:objectID", function(req, res) {
   const currentObject = db
     .get("objects")
-    .filter(item => +req.params.objectID === item.id);
+    .find({ id: +req.params.objectID })
+    .value();
   res.json(currentObject);
 });
 
