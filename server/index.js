@@ -1,17 +1,20 @@
 const express = require("express");
-const fileSystem = require("fs");
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 const app = express();
-const objectsJSON = fileSystem.readFileSync("./db.json");
-const objects = JSON.parse(objectsJSON).objects;
+
+const adapter = new FileSync("./db.json");
+const db = low(adapter);
 
 app.get("/api/objects/", function(req, res) {
-  res.json(objects);
+  res.json(db.get("objects"));
 });
 
 app.get("/api/objects/:objectID", function(req, res) {
-  const currentObject = objects.filter(
-    item => +req.params.objectID === item.id
-  );
+  const currentObject = db
+    .get("objects")
+    .find({ id: +req.params.objectID })
+    .value();
   res.json(currentObject);
 });
 

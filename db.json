@@ -58,7 +58,7 @@
       "id": 4,
       "city": "Севастополь",
       "address": "Глухова, 20",
-      "map": [44.596036, 33.484550],
+      "map": [44.596036, 33.48455],
       "square": 5.4,
       "price": 1200000,
       "com": {
@@ -77,6 +77,96 @@
       "city": "Севастополь",
       "address": "Глухова, 24",
       "map": [44.595664, 33.483768],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 6,
+      "city": "Севастополь",
+      "address": "Хрусталева, 91",
+      "map": [44.56719, 33.51997],
+      "square": 5.4,
+      "price": 999999999,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 7,
+      "city": "Севастополь",
+      "address": "Хрусталева, 87",
+      "map": [44.56807, 33.520473],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 8,
+      "city": "Севастополь",
+      "address": "Хрусталева, 93",
+      "map": [44.566644, 33.519979],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 9,
+      "city": "Севастополь",
+      "address": "Хрусталева, 97",
+      "map": [44.566111, 33.52041],
+      "square": 5.4,
+      "price": 1200000,
+      "com": {
+        "sewage": true,
+        "water": false,
+        "light": true,
+        "gas": false
+      },
+      "description": "lorem ...",
+      "phone": "+79781111111",
+      "email": "lorem@gmail.com",
+      "photos": ["http://placehold.it/100x100"]
+    },
+    {
+      "id": 10,
+      "city": "Севастополь",
+      "address": "Хрусталева, 85",
+      "map": [44.568269, 33.521318],
       "square": 5.4,
       "price": 1200000,
       "com": {
