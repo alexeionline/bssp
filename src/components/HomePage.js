@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import { Container } from "semantic-ui-react";
@@ -34,4 +35,4 @@ export default connect(
       }
     };
   }
-)(HomePage);
+)(withRouter(HomePage));
