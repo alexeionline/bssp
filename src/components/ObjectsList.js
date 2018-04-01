@@ -23,7 +23,9 @@ const ObjectsList = props => {
               <List.Item as="li">Phone: {object.phone}</List.Item>
               <List.Item as="li">Email: {object.email}`}</List.Item>
               <List.Item as="li">
-                {object.photos.map(photo => <Image src={photo} size="small" />)}
+                {object.photos.map(photo => (
+                  <Image key={photo} src={photo} size="small" />
+                ))}
               </List.Item>
             </List>
           </Container>
