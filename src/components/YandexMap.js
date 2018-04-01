@@ -15,6 +15,10 @@ const YandexMap = props => {
               <Placemark
                 key={object.id + Date.now()}
                 geometry={{ coordinates: object.map }}
+                properties={{
+                  hintContent: object.address,
+                  balloonContent: object.description
+                }}
               />
             );
           })};
