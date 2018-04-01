@@ -6,7 +6,7 @@ const AppMenu = () => {
   return (
     <Menu>
       <Menu.Item as={Link} to="/">
-        Map
+        Home Page
       </Menu.Item>
       <Menu.Item as={Link} to="/about">
         About
