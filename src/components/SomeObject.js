@@ -33,12 +33,10 @@ const parseComms = com =>
     return (communications += (com[key] && key) || " ");
   }, "");
 
-export default withRouter(
-  connect((store, ownProps) => {
-    return {
-      object: store.objects.objects.find(
-        object => object.id === +ownProps.match.params.objectID
-      )
-    };
-  })(SomeObject)
-);
+export default connect((store, ownProps) => {
+  return {
+    object: store.objects.objects.find(
+      object => object.id === +ownProps.match.params.objectID
+    )
+  };
+})(SomeObject);
