@@ -14,6 +14,9 @@ const AppMenu = () => {
       <Menu.Item as={Link} to="/add">
         Add
       </Menu.Item>
+      <Menu.Item as={Link} to="/o/1">
+        1
+      </Menu.Item>
     </Menu>
   );
 };
