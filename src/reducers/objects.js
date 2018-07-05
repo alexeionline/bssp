@@ -13,7 +13,7 @@ const initialState = {
     id: Date.now(),
     city: "",
     address: "",
-    map: ["", ""],
+    map: [44.616687, 33.525432],
     square: "",
     price: "",
     com: {
@@ -52,7 +52,13 @@ export default function objects(state = initialState, action) {
     }
     case CHANGE_OBJECT_FROM_FORM: {
       const change = { ...state.newObject };
-      change[action.payload.inputType] = action.payload.inputValue;
+      if (action.payload.inputType === "mapX") {
+        change.map[0] = action.payload.inputValue;
+      } else if (action.payload.inputType === "mapY") {
+        change.map[1] = action.payload.inputValue;
+      } else {
+        change[action.payload.inputType] = action.payload.inputValue;
+      }
       return {
         ...state,
         newObject: change
