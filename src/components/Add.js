@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -16,10 +17,119 @@ import {
   changeNewObjectFromForm
 } from "../actions/objects";
 
-const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
-  const changeObject = e => {
-    onChangeNewObject(e.target.name, e.target.value);
+const Add = ({ onAddNewObject, onChangeNewObject, newObject }) => {
+  // const setGeoLocation = (ymaps) => {
+  //     return ymaps.geolocation.get({
+  //         provider: 'yandex',
+  //         mapStateAutoApply: true })
+  //         .then(result => {
+  //             const geocodeController = {
+  //             }
+  //             return 1;
+  //             changeNewObject(0;
+  //         });
+  // };
+  const geocodeCoordsAndChangeNewObject = (geocodeCity, geocodeAddress) => {
+    // setGeoLocation(ymaps);
+    ymaps.geocode([...newObject.map]).then(result => {
+      const fullAddress = result.geoObjects
+        .get(0)
+        .properties.get("metaDataProperty.GeocoderMetaData.Address.Components");
+
+      const likeEvent = {
+        target: {}
+      };
+
+      const address = [];
+      let city = "";
+
+      for (let addressProp of fullAddress) {
+        if (addressProp.kind === "locality") {
+          city = addressProp.name;
+        }
+
+        if (addressProp.kind === "street") {
+          address.push(addressProp.name);
+        }
+
+        if (addressProp.kind === "house") {
+          address.push(addressProp.name);
+        }
+      }
+      if (geocodeCity) {
+        likeEvent.target.name = "city";
+        likeEvent.target.value = city || "";
+        changeNewObject(likeEvent);
+      }
+
+      if (geocodeAddress) {
+        likeEvent.target.name = "address";
+        likeEvent.target.value = address.join(",") || "";
+        changeNewObject(likeEvent);
+      }
+    });
   };
+
+  const changeNewObject = event => {
+    onChangeNewObject(event.target.name, event.target.value);
+  };
+
+  const getFullAddress = () =>
+    [...newObject.city, ...newObject.address].join(",");
+
+  const handleCityOrAddressChange = event => {
+    changeNewObject(event);
+
+    const geocodeController = {
+      city: false,
+      address: false
+    };
+
+    if (event.target.name === "city") {
+      geocodeController.address = !newObject.address;
+    } else {
+      geocodeController.city = !newObject.city;
+    }
+
+    ymaps.geocode(getFullAddress()).then(result => {
+      const coords = result.geoObjects.get(0).geometry.getCoordinates();
+      changeCoordinates("mapX", coords[0], geocodeController);
+      changeCoordinates("mapY", coords[1], geocodeController);
+    });
+  };
+
+  const changeCoordinates = (name, value, geocodeController) => {
+    const likeEvent = {
+      target: {}
+    };
+
+    likeEvent.target.name = name;
+    likeEvent.target.value = value;
+
+    changeNewObject(likeEvent);
+    geocodeCoordsAndChangeNewObject(
+      geocodeController.city,
+      geocodeController.address
+    );
+  };
+
+  const handleMapChange = event => {
+    const mapCoords = event.get("target").geometry.getCoordinates();
+    const geocodeController = {
+      city: true,
+      address: true
+    };
+
+    if (mapCoords[0] !== newObject.map[0]) {
+      changeCoordinates("mapX", mapCoords[0], geocodeController);
+    }
+
+    if (mapCoords[1] !== newObject.map[1]) {
+      changeCoordinates("mapY", mapCoords[1], geocodeController);
+    }
+  };
+
+  const handleDefault = event => changeNewObject(event);
 
   return (
     <Container>
@@ -27,15 +137,17 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
         <Form.Field>
           <label>City</label>
           <Input
-            placeholder="Type your address here..."
+            placeholder="Type your city here..."
             name="city"
-            onChange={changeObject}
+            onChange={handleCityOrAddressChange}
+            value={newObject.city}
           />
           <label>Address</label>
           <Input
             placeholder="Type your address here..."
             name="address"
-            onChange={changeObject}
+            onChange={handleCityOrAddressChange}
+            value={newObject.address}
           />
         </Form.Field>
         <Form.Field>
@@ -44,23 +156,30 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
             placeholder="Type lan here..."
             type="number"
             name="mapX"
-            onChange={changeObject}
-            value={mapState.center[0]}
+            onChange={handleDefault}
+            value={newObject.map && newObject.map[0]}
           />
           <Input
             placeholder="Type lon here..."
             type="number"
             name="mapY"
-            onChange={changeObject}
-            value={mapState.center[1]}
+            onChange={handleDefault}
+            value={newObject.map && newObject.map[1]}
           />
           <YMaps>
-            <Map state={mapState}>
+            <Map
+              state={{
+                center: [...newObject.map],
+                zoom: 17
+              }}
+            >
               <GeoObject
+                name="map"
                 geometry={{
                   type: "Point",
-                  coordinates: mapState.center
+                  coordinates: [...newObject.map]
                 }}
+                onGeometryChange={handleMapChange}
                 properties={{
                   iconContent: "Set coordinates",
                   hintContent: "Drag me"
@@ -78,7 +197,7 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
             placeholder="Type quantity of squares here..."
             name="square"
             type="number"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Form.Field>
@@ -87,22 +206,26 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
             placeholder="Type price here..."
             name="price"
             type="number"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Form.Field>
           <label>Communications</label>
-          <Checkbox label="Sewage" name="com.sewage" onChange={changeObject} />
-          <Checkbox label="Water" name="com.water" onChange={changeObject} />
-          <Checkbox label="Light" name="com.light" onChange={changeObject} />
-          <Checkbox label="Gas" name="com.gas" onChange={changeObject} />
+          <Checkbox
+            label="Sewage"
+            name="com.sewage"
+            onChange={changeNewObject}
+          />
+          <Checkbox label="Water" name="com.water" onChange={changeNewObject} />
+          <Checkbox label="Light" name="com.light" onChange={changeNewObject} />
+          <Checkbox label="Gas" name="com.gas" onChange={changeNewObject} />
         </Form.Field>
         <Form.Field>
           <label>Description</label>
           <TextArea
             placeholder="Type description here..."
             name="description"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Form.Field>
@@ -110,7 +233,7 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
           <Input
             placeholder="Type your phone here..."
             name="phone"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Form.Field>
@@ -118,7 +241,7 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
           <Input
             placeholder="Type your e-mail here..."
             name="email"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Form.Field>
@@ -126,7 +249,7 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
           <Input
             placeholder="Type your photos here..."
             name="photos"
-            onChange={changeObject}
+            onChange={handleDefault}
           />
         </Form.Field>
         <Button type="submit">Submit</Button>
@@ -138,11 +261,7 @@ const Add = ({ onAddNewObject, onChangeNewObject, mapState }) => {
 export default withRouter(
   connect(
     store => ({
-      ...store,
-      mapState: {
-        center: [44.616687, 33.525432],
-        zoom: 10
-      }
+      newObject: { ...store.objects.newObject }
     }),
     dispatch => {
       return {

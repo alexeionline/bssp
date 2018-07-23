@@ -26,7 +26,8 @@ const initialState = {
     phone: "",
     email: "",
     photos: []
-  }
+  },
+  userLocation: {}
 };
 
 export default function objects(state = initialState, action) {
