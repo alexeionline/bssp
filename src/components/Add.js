@@ -18,19 +18,7 @@ import {
 } from "../actions/objects";
 
 const Add = ({ onAddNewObject, onChangeNewObject, newObject }) => {
-  // const setGeoLocation = (ymaps) => {
-  //     return ymaps.geolocation.get({
-  //         provider: 'yandex',
-  //         mapStateAutoApply: true })
-  //         .then(result => {
-  //             const geocodeController = {
-  //             }
-  //             return 1;
-  //             changeNewObject(0;
-  //         });
-  // };
   const geocodeCoordsAndChangeNewObject = (geocodeCity, geocodeAddress) => {
-    // setGeoLocation(ymaps);
     ymaps.geocode([...newObject.map]).then(result => {
       const fullAddress = result.geoObjects
         .get(0)
