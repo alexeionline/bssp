@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 
 const mapState = { center: [44.616687, 33.525432], zoom: 10 };
 
-const YandexMap = props => {
+const YandexMap = ({ objects }) => {
   return (
     <Container>
       <YMaps>
         <Map state={mapState}>
-          {props.objects.map(object => {
+          {objects.map(object => {
             return (
               <Placemark
                 key={object.id + Date.now()}
